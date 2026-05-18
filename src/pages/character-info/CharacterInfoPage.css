@@ -1,0 +1,27 @@
+.character-info-page__header {
+  padding: 44px 0 0 215px;
+}
+
+.character-info-page__back-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  font-family: 'Karla', sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: 0;
+  color: #000;
+  text-transform: uppercase;
+}
+
+.character-info-page__back-button svg {
+  display: block;
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+}
