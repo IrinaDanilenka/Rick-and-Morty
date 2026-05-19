@@ -1,0 +1,12 @@
+.characters-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+
+.characters-list__logo {
+  margin-top: 20px;
+}
