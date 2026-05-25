@@ -1,6 +1,6 @@
 import './Header.css';
 
-import Logo from '../../assets/logo.svg?react';
+import { Logo } from '@/assets';
 
 export function Header() {
   return (
