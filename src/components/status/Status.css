@@ -1,0 +1,19 @@
+.status {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.status-alive {
+  background-color: #55cc44;
+}
+
+.status-dead {
+  background-color: #e85d5d;
+}
+
+.status-unknown {
+  background-color: #f0a500;
+}

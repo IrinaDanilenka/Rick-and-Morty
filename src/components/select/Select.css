@@ -1,0 +1,149 @@
+.select {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  font-family: 'Karla', sans-serif;
+}
+
+.select__label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 700;
+  line-height: 1;
+  color: #000;
+}
+
+.select__control {
+  position: relative;
+}
+
+.select__button {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  box-sizing: border-box;
+  width: 100%;
+  border: 1px solid #393939;
+  border-radius: 8px;
+  background-color: #fff;
+  cursor: pointer;
+  text-align: left;
+}
+
+.select__button:focus-visible {
+  outline: 2px solid #393939;
+  outline-offset: 2px;
+}
+
+.select__value {
+  flex: 1;
+  min-width: 0;
+  font-weight: 400;
+  color: #393939;
+}
+
+.select__value--placeholder {
+  color: #828282;
+}
+
+.select__option-text {
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.select__arrow {
+  flex-shrink: 0;
+  color: #393939;
+  transition: transform 0.2s ease;
+}
+
+.select__arrow--open {
+  transform: rotate(180deg);
+}
+
+.select__dropdown {
+  position: absolute;
+  top: calc(100% + 4px);
+  right: 0;
+  left: 0;
+  z-index: 10;
+  margin: 0;
+  padding: 8px 0;
+  list-style: none;
+  border: 1px solid #393939;
+  border-radius: 8px;
+  background-color: #fff;
+  box-shadow: 0 4px 12px rgba(57, 57, 57, 0.12);
+}
+
+.select__option {
+  padding: 0 16px;
+  cursor: pointer;
+}
+
+.select__option:hover {
+  background-color: #f5f5f5;
+}
+
+.select--big {
+  width: 240px;
+}
+
+.select--big .select__label {
+  font-size: 18px;
+}
+
+.select--big .select__button {
+  min-height: 56px;
+  padding: 12px 16px;
+}
+
+.select--big .select__value,
+.select--big .select__option-text {
+  font-size: 16px;
+  line-height: 21px;
+}
+
+.select--big .select__option {
+  min-height: 48px;
+  display: flex;
+  align-items: center;
+}
+
+.select--big .select__arrow {
+  width: 12px;
+  height: 6px;
+}
+
+.select--small {
+  width: 145px;
+}
+
+.select--small .select__label {
+  font-size: 18px;
+}
+
+.select--small .select__button {
+  min-height: 44px;
+  padding: 8px 12px;
+}
+
+.select--small .select__value,
+.select--small .select__option-text {
+  font-size: 14px;
+  line-height: 18px;
+}
+
+.select--small .select__option {
+  min-height: 40px;
+  display: flex;
+  align-items: center;
+}
+
+.select--small .select__arrow {
+  width: 10px;
+  height: 5px;
+}

@@ -1,9 +1,44 @@
 import './CharactersListPage.css';
 
+import { useState } from 'react';
+
+import { type CharacterStatus, Status } from '@/components/status/Status';
+import { optionsGender, optionsSpecies, optionsStatus } from '@/mockData/mock';
+
 import logoMainPage from '../../assets/logo_main_page.png';
-import { Loader } from '../../components/loader/Loader';
+import {
+  type DefaultOptionComponentProps,
+  Select
+} from '../../components/select/Select';
+
+const StatusOptionComponent = ({
+  option
+}: DefaultOptionComponentProps<CharacterStatus>) => {
+  return (
+    <div className='status-option'>
+      <span className='status-option__label'>{option.label}</span>
+      <Status status={option.value} />
+    </div>
+  );
+};
 
 export function CharactersListPage() {
+  const [gender, setGender] = useState<string | ''>('');
+  const [species, setSpecies] = useState<string | ''>('');
+  const [status, setStatus] = useState<CharacterStatus | ''>('');
+
+  const onChangeCharacterGender = (value: string) => {
+    setGender(value);
+  };
+
+  const onChangeCharacterSpecies = (value: string) => {
+    setSpecies(value);
+  };
+
+  const onChangeCharacterStatus = (value: CharacterStatus) => {
+    setStatus(value);
+  };
+
   return (
     <>
       <div className='characters-list'>
@@ -14,10 +49,35 @@ export function CharactersListPage() {
         />
       </div>
 
-      <Loader
-        text='Loading characters...'
-        size={475}
-      />
+      <div className='characters-list__filters'>
+        <Select
+          options={optionsGender}
+          value={gender}
+          placeholder='Select a gender'
+          size='big'
+          label='Gender'
+          onChange={onChangeCharacterGender}
+        />
+
+        <Select
+          options={optionsSpecies}
+          value={species}
+          placeholder='Select a species'
+          size='big'
+          label='Species'
+          onChange={onChangeCharacterSpecies}
+        />
+
+        <Select
+          options={optionsStatus}
+          value={status}
+          placeholder='Select a status'
+          size='small'
+          label='Status'
+          OptionComponent={StatusOptionComponent}
+          onChange={onChangeCharacterStatus}
+        />
+      </div>
     </>
   );
 }

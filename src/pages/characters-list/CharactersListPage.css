@@ -10,3 +10,35 @@
 .characters-list__logo {
   margin-top: 20px;
 }
+
+.characters-list__filters {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: 32px 24px;
+  box-sizing: border-box;
+  width: 100%;
+  padding: 40px 210px 24px;
+}
+
+.status-option {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  gap: 12px;
+}
+
+.status-option__label {
+  font-weight: 400;
+  color: #393939;
+}
+
+.select--big .status-option__label {
+  font-size: 16px;
+  line-height: 21px;
+}
+
+.select--small .status-option__label {
+  font-size: 14px;
+  line-height: 18px;
+}

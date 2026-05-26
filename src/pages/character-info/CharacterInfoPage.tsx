@@ -2,7 +2,8 @@ import './CharacterInfoPage.css';
 
 import { useNavigate } from 'react-router';
 
-import ArrowBack from '../../assets/arrow_back.svg?react';
+import { ArrowBack } from '@/assets';
+
 import { Loader } from '../../components/loader/Loader';
 
 export function CharacterInfoPage() {
