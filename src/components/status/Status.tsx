@@ -9,7 +9,7 @@ type StatusProps = {
 export function Status({ status }: StatusProps) {
   return (
     <span
-      className={`status status-${status}`}
+      className={`status status--${status}`}
       aria-hidden
     />
   );

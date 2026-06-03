@@ -2,7 +2,8 @@ import './CharactersListPage.css';
 
 import { useState } from 'react';
 
-import { type CharacterStatus, Status } from '@/components/status/Status';
+import { Search } from '@/assets';
+import { type CharacterStatus, Input, Status } from '@/components';
 import { optionsGender, optionsSpecies, optionsStatus } from '@/mockData/mock';
 
 import logoMainPage from '../../assets/logo_main_page.png';
@@ -26,6 +27,8 @@ export function CharactersListPage() {
   const [gender, setGender] = useState<string | ''>('');
   const [species, setSpecies] = useState<string | ''>('');
   const [status, setStatus] = useState<CharacterStatus | ''>('');
+  const [location, setLocation] = useState<string | ''>('');
+  const [characterName, setCharacterName] = useState<string | ''>('');
 
   const onChangeCharacterGender = (value: string) => {
     setGender(value);
@@ -37,6 +40,10 @@ export function CharactersListPage() {
 
   const onChangeCharacterStatus = (value: CharacterStatus) => {
     setStatus(value);
+  };
+
+  const onChangeLocation = (value: string) => {
+    setLocation(value);
   };
 
   return (
@@ -76,6 +83,21 @@ export function CharactersListPage() {
           label='Status'
           OptionComponent={StatusOptionComponent}
           onChange={onChangeCharacterStatus}
+        />
+
+        <Input
+          placeholder='Location'
+          value={location}
+          variant='underlined'
+          onChange={onChangeLocation}
+        />
+
+        <Input
+          placeholder='Filter by name...'
+          value={characterName}
+          variant='bordered'
+          onChange={setCharacterName}
+          icon={<Search />}
         />
       </div>
     </>
