@@ -3,8 +3,7 @@ import './CharactersListPage.css';
 import { useState } from 'react';
 
 import { Search } from '@/assets';
-import { Input } from '@/components/input/Input';
-import { type CharacterStatus, Status } from '@/components/status/Status';
+import { type CharacterStatus, Input, Status } from '@/components';
 import { optionsGender, optionsSpecies, optionsStatus } from '@/mockData/mock';
 
 import logoMainPage from '../../assets/logo_main_page.png';

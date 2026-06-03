@@ -1,4 +1,4 @@
-import type { CharacterStatus } from '@/components/status/Status';
+import type { CharacterStatus } from '@/components';
 
 export const optionsStatus: { label: string; value: CharacterStatus }[] = [
   { label: 'Alive', value: 'alive' },
