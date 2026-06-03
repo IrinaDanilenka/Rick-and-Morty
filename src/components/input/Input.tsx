@@ -1,4 +1,4 @@
-import './Input.css';
+import './Input.scss';
 
 import { Close } from '@/assets';
 import { classNames } from '@/helpers';

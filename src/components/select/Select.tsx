@@ -1,4 +1,4 @@
-import './Select.css';
+import './Select.scss';
 
 import { useEffect, useRef, useState } from 'react';
 

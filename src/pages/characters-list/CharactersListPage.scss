@@ -42,3 +42,12 @@
   font-size: 14px;
   line-height: 18px;
 }
+
+.characters-list__cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  box-sizing: border-box;
+  width: 100%;
+  padding: 0 210px 40px;
+}

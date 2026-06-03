@@ -1,10 +1,17 @@
-import './CharactersListPage.css';
+import './CharactersListPage.scss';
 
 import { useState } from 'react';
 
 import { Search } from '@/assets';
-import { type CharacterStatus, Input, Status } from '@/components';
+import avatarImage from '@/assets/avatar.png';
+import {
+  type CharacterStatus,
+  Input,
+  Status as StatusBadge
+} from '@/components';
 import { optionsGender, optionsSpecies, optionsStatus } from '@/mockData/mock';
+import { Gender, Species, Status } from '@/shared/enums';
+import { CharacterCard } from '@/vidgets';
 
 import logoMainPage from '../../assets/logo_main_page.png';
 import {
@@ -18,7 +25,7 @@ const StatusOptionComponent = ({
   return (
     <div className='status-option'>
       <span className='status-option__label'>{option.label}</span>
-      <Status status={option.value} />
+      <StatusBadge status={option.value} />
     </div>
   );
 };
@@ -44,6 +51,10 @@ export function CharactersListPage() {
 
   const onChangeLocation = (value: string) => {
     setLocation(value);
+  };
+
+  const onEditCharacter = () => {
+    console.log('onEditCharacterCard');
   };
 
   return (
@@ -98,6 +109,18 @@ export function CharactersListPage() {
           variant='bordered'
           onChange={setCharacterName}
           icon={<Search />}
+        />
+      </div>
+
+      <div className='characters-list__cards'>
+        <CharacterCard
+          name='Rick Sanchez'
+          gender={Gender.MALE}
+          species={Species.HUMAN}
+          location='Earth'
+          status={Status.ALIVE}
+          avatar={avatarImage}
+          onEdit={onEditCharacter}
         />
       </div>
     </>
