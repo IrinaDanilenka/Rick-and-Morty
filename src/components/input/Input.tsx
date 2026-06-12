@@ -7,7 +7,7 @@ type InputProps = {
   placeholder: string;
   value: string;
   variant: 'underlined' | 'bordered';
-  onChange: (value: string) => void;
+  onChange?: (value: string) => void;
   icon?: React.ReactNode;
   className?: string;
 };

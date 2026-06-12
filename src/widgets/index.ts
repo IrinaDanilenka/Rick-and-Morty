@@ -1,4 +1,4 @@
 export {
   CharacterCard,
-  type CharacterCardProps
+  type CharacterCardWidgetProps
 } from './characterCard/CharacterCard';

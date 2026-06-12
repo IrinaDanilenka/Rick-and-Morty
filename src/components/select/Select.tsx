@@ -19,6 +19,7 @@ type SelectProps<T> = {
   placeholder: string;
   size: 'big' | 'small';
   label: string;
+  className?: string;
   OptionComponent?: React.ComponentType<DefaultOptionComponentProps<T>>;
   onChange: (value: T) => void;
 };
@@ -35,6 +36,7 @@ export const Select = <T,>({
   placeholder,
   size,
   label,
+  className,
   OptionComponent = DefaultOptionComponent,
   onChange
 }: SelectProps<T>) => {
@@ -70,7 +72,7 @@ export const Select = <T,>({
 
   return (
     <div
-      className={`select select--${size}`}
+      className={`select select--${size}${className ? ` ${className}` : ''}`}
       ref={selectRef}
     >
       <span className='select__label'>{label}</span>
