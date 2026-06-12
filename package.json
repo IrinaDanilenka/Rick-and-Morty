@@ -6,9 +6,11 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
-    "lint": "eslint .",
+    "lint": "eslint . && npm run lint:styles",
+    "lint:styles": "stylelint \"src/**/*.scss\"",
+    "lint:styles:fix": "stylelint \"src/**/*.scss\" --fix",
     "preview": "vite preview",
-    "pretty": "prettier src/. --write"
+    "pretty": "prettier \"src/**/*.{ts,tsx,scss}\" --write"
   },
   "dependencies": {
     "react": "^19.2.5",
@@ -28,6 +30,9 @@
     "eslint-plugin-simple-import-sort": "^13.0.0",
     "globals": "^17.5.0",
     "prettier": "^3.8.3",
+    "sass": "^1.100.0",
+    "stylelint": "^17.12.0",
+    "stylelint-config-standard-scss": "^17.0.0",
     "typescript": "~6.0.2",
     "typescript-eslint": "^8.58.2",
     "vite": "^8.0.10",

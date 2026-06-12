@@ -1,22 +1,23 @@
-import type { CharacterStatus } from '@/components';
+import { type CharacterStatus } from '@/components';
+import { Gender, Species, Status } from '@/shared/enums';
 
 export const optionsStatus: { label: string; value: CharacterStatus }[] = [
-  { label: 'Alive', value: 'alive' },
-  { label: 'Dead', value: 'dead' },
-  { label: 'Unknown', value: 'unknown' }
+  { label: 'Alive', value: Status.ALIVE },
+  { label: 'Dead', value: Status.DEAD },
+  { label: 'Unknown', value: Status.UNKNOWN }
 ];
 
 export const optionsGender: { label: string; value: string }[] = [
-  { label: 'Female', value: 'female' },
-  { label: 'Male', value: 'male' },
-  { label: 'Genderless', value: 'genderless' },
-  { label: 'Unknown', value: 'unknown' }
+  { label: 'Female', value: Gender.FEMALE },
+  { label: 'Male', value: Gender.MALE },
+  { label: 'Genderless', value: Gender.GENDERLESS },
+  { label: 'Unknown', value: Gender.UNKNOWN }
 ];
 
 export const optionsSpecies: { label: string; value: string }[] = [
-  { label: 'Human', value: 'human' },
-  { label: 'Alien', value: 'alien' },
-  { label: 'Humanoid', value: 'humanoid' },
-  { label: 'Animal', value: 'animal' },
-  { label: 'Robot', value: 'robot' }
+  { label: 'Human', value: Species.HUMAN },
+  { label: 'Alien', value: Species.ALIEN },
+  { label: 'Humanoid', value: Species.HUMANOID },
+  { label: 'Animal', value: Species.ANIMAL },
+  { label: 'Robot', value: Species.ROBOT }
 ];

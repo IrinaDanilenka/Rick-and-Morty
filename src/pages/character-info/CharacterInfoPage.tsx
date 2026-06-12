@@ -1,4 +1,4 @@
-import './CharacterInfoPage.css';
+import './CharacterInfoPage.scss';
 
 import { useNavigate } from 'react-router';
 

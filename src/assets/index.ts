@@ -1,1 +1,1 @@
-export { ArrowBack, ArrowDropDown, Close, Logo, Search } from './icons';
+export { ArrowBack, ArrowDropDown, Close, Edit, Logo, Search } from './icons';

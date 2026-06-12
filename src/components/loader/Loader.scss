@@ -20,8 +20,8 @@
   border-radius: 50%;
   background: radial-gradient(
     circle,
-    rgba(151, 255, 87, 0.55) 0%,
-    rgba(151, 255, 87, 0.15) 45%,
+    rgb(151 255 87 / 55%) 0%,
+    rgb(151 255 87 / 15%) 45%,
     transparent 70%
   );
   animation: loader-glow 2.4s ease-in-out infinite;
@@ -33,14 +33,14 @@
   z-index: 1;
   display: block;
   animation: loader-pulse 2.4s ease-in-out infinite;
-  filter: drop-shadow(0 0 14px rgba(132, 224, 58, 0.45));
+  filter: drop-shadow(0 0 14px rgb(132 224 58 / 45%));
 }
 
 .loader__text {
   display: flex;
   align-items: center;
   margin: 20px 0 0;
-  font-family: 'Karla', sans-serif;
+  font-family: Karla, sans-serif;
   font-size: 18px;
   font-weight: 700;
   line-height: 1;

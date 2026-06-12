@@ -1,4 +1,4 @@
-import './Loader.css';
+import './Loader.scss';
 
 import loaderImage from '../../assets/loader.png';
 

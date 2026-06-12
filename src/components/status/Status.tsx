@@ -1,4 +1,4 @@
-import './Status.css';
+import './Status.scss';
 
 export type CharacterStatus = 'alive' | 'dead' | 'unknown';
 

@@ -2,7 +2,7 @@
   position: relative;
   display: flex;
   flex-direction: column;
-  font-family: 'Karla', sans-serif;
+  font-family: Karla, sans-serif;
 }
 
 .select__label {
@@ -76,7 +76,7 @@
   border: 1px solid #393939;
   border-radius: 8px;
   background-color: #fff;
-  box-shadow: 0 4px 12px rgba(57, 57, 57, 0.12);
+  box-shadow: 0 4px 12px rgb(57 57 57 / 12%);
 }
 
 .select__option {

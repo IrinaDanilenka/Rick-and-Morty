@@ -3,7 +3,7 @@
   align-items: center;
   gap: 4px;
   box-sizing: border-box;
-  font-family: 'Karla', sans-serif;
+  font-family: Karla, sans-serif;
   position: relative;
 }
 
@@ -65,7 +65,7 @@
   width: 240px;
   min-height: 56px;
   padding: 0 30px 0 16px;
-  border: 1px solid rgba(0, 0, 0, 0.5);
+  border: 1px solid rgb(0 0 0 / 50%);
   border-radius: 8px;
   background-color: #fff;
 
@@ -78,5 +78,5 @@
 }
 
 .input--bordered:focus-within {
-  box-shadow: 0 0 0 2px rgba(57, 57, 57, 0.15);
+  box-shadow: 0 0 0 2px rgb(57 57 57 / 15%);
 }
