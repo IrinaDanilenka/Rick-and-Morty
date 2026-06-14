@@ -5,13 +5,11 @@ import { useState } from 'react';
 import { Search } from '@/assets';
 import {
   type CharacterStatus,
+  type DefaultOptionComponentProps,
   Input,
+  Select,
   Status as StatusBadge
 } from '@/components';
-import {
-  type DefaultOptionComponentProps,
-  Select
-} from '@/components/select/Select';
 import { optionsGender, optionsSpecies, optionsStatus } from '@/mockData/mock';
 
 const StatusOptionComponent = ({

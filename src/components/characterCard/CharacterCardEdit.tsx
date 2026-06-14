@@ -1,18 +1,17 @@
-import { Controller, useForm } from 'react-hook-form';
+import { useForm } from 'react-hook-form';
 
-import { type CharacterStatus, Status as StatusIndicator } from '@/components';
-import {
-  type DefaultOptionComponentProps,
-  Select
-} from '@/components/select/Select';
 import { optionsGender, optionsSpecies, optionsStatus } from '@/mockData/mock';
+import { Gender, Species, type Status } from '@/shared/enums';
 
-import { Input } from '../input/Input';
+import { FormInput } from '../formInput/FormInput';
+import { FormSelect } from '../formSelect/FormSelect';
+import { type DefaultOptionComponentProps } from '../select/Select';
+import { Status as StatusIndicator } from '../status/Status';
 import type { CharacterCardEditProps, CharacterCardFormValues } from './types';
 
 const StatusOptionComponent = ({
   option
-}: DefaultOptionComponentProps<CharacterStatus>) => {
+}: DefaultOptionComponentProps<Status>) => {
   return (
     <div className='status-option'>
       <span className='status-option__label'>{option.label}</span>
@@ -38,89 +37,59 @@ export function CharacterCardEdit({
       className='character-card__body character-card__body--edit'
       onSubmit={handleSubmit(() => onSave())}
     >
-      <Controller
+      <FormInput
         name='name'
         control={control}
-        render={({ field }) => (
-          <Input
-            placeholder='Name'
-            value={field.value}
-            onChange={field.onChange}
-            variant='underlined'
-            className='character-card__name-input'
-          />
-        )}
+        placeholder='Name'
+        variant='underlined'
+        className='character-card__name-input'
       />
 
       <div className='character-card__field'>
-        <Controller
+        <FormSelect<CharacterCardFormValues, Gender>
           name='gender'
           control={control}
-          render={({ field }) => (
-            <Select
-              options={optionsGender}
-              value={field.value}
-              onChange={field.onChange}
-              placeholder='Gender'
-              size='small'
-              label='Gender'
-              className='character-card__field-select'
-            />
-          )}
+          options={optionsGender}
+          placeholder='Gender'
+          size='small'
+          label='Gender'
+          className='character-card__field-select'
         />
       </div>
 
       <div className='character-card__field'>
-        <Controller
+        <FormSelect<CharacterCardFormValues, Species>
           name='species'
           control={control}
-          render={({ field }) => (
-            <Select
-              options={optionsSpecies}
-              value={field.value}
-              onChange={field.onChange}
-              placeholder='Species'
-              size='small'
-              label='Species'
-              className='character-card__field-select'
-            />
-          )}
+          options={optionsSpecies}
+          placeholder='Species'
+          size='small'
+          label='Species'
+          className='character-card__field-select'
         />
       </div>
 
       <div className='character-card__field'>
         <p className='character-card__field-label'>Location</p>
-        <Controller
+        <FormInput
           name='location'
           control={control}
-          render={({ field }) => (
-            <Input
-              placeholder='Location'
-              value={field.value}
-              onChange={field.onChange}
-              variant='underlined'
-              className='character-card__field-input'
-            />
-          )}
+          placeholder='Location'
+          variant='underlined'
+          className='character-card__field-input'
         />
       </div>
 
       <div className='character-card__field'>
-        <Controller
+        <FormSelect<CharacterCardFormValues, Status>
           name='status'
           control={control}
-          render={({ field }) => (
-            <Select
-              options={optionsStatus}
-              value={field.value}
-              onChange={field.onChange}
-              placeholder='Status'
-              size='small'
-              label='Status'
-              className='character-card__field-select'
-              OptionComponent={StatusOptionComponent}
-            />
-          )}
+          options={optionsStatus}
+          placeholder='Status'
+          size='small'
+          label='Status'
+          className='character-card__field-select'
+          OptionComponent={StatusOptionComponent}
         />
       </div>
     </form>
