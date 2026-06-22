@@ -2,7 +2,6 @@
   position: relative;
   display: flex;
   flex-direction: column;
-  font-family: Karla, sans-serif;
 }
 
 .select__label {
@@ -11,6 +10,11 @@
   font-weight: 700;
   line-height: 1;
   color: #000;
+
+  &:empty {
+    display: none;
+    margin-bottom: 0;
+  }
 }
 
 .select__control {
@@ -114,36 +118,49 @@
 }
 
 .select--big .select__arrow {
-  width: 12px;
-  height: 6px;
+  width: 10px;
+  height: 5px;
 }
 
 .select--small {
-  width: 145px;
+  width: auto;
+  min-width: 88px;
 }
 
 .select--small .select__label {
-  font-size: 18px;
+  margin-bottom: 2px;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 21px;
+  color: #000;
 }
 
 .select--small .select__button {
-  min-height: 44px;
-  padding: 8px 12px;
+  min-height: 21px;
+  padding: 0 6px 0 8px;
+  border-radius: 4px;
+  gap: 4px;
 }
 
 .select--small .select__value,
 .select--small .select__option-text {
   font-size: 14px;
-  line-height: 18px;
+  line-height: 21px;
 }
 
 .select--small .select__option {
-  min-height: 40px;
+  min-height: 28px;
+  padding: 0 8px;
   display: flex;
   align-items: center;
 }
 
+.select--small .select__dropdown {
+  top: calc(100% + 2px);
+  padding: 4px 0;
+}
+
 .select--small .select__arrow {
-  width: 10px;
-  height: 5px;
+  width: 8px;
+  height: 4px;
 }

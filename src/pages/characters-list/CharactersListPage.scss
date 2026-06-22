@@ -11,16 +11,6 @@
   margin-top: 20px;
 }
 
-.characters-list__filters {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: flex-end;
-  gap: 32px 24px;
-  box-sizing: border-box;
-  width: 100%;
-  padding: 40px 210px 24px;
-}
-
 .status-option {
   display: flex;
   align-items: center;
@@ -40,7 +30,7 @@
 
 .select--small .status-option__label {
   font-size: 14px;
-  line-height: 18px;
+  line-height: 21px;
 }
 
 .characters-list__cards {

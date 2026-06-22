@@ -8,8 +8,7 @@
   padding: 6px;
   border-radius: 8px;
   background-color: #fff;
-  box-shadow: 1px 1px 4px 0px rgba(0, 0, 0, 0.25);
-  font-family: Roboto, sans-serif;
+  box-shadow: 1px 1px 4px 0 rgb(0 0 0 / 25%);
 
   &:hover {
     .character-card__edit {
@@ -32,6 +31,7 @@
   flex-direction: column;
   justify-content: flex-start;
   min-width: 0;
+  padding-right: 44px;
 }
 
 .character-card__name {
@@ -52,7 +52,12 @@
   flex-direction: column;
   gap: 2px;
   min-width: 0;
-  margin-top: 6px;
+  max-width: 180px;
+  margin-top: 7px;
+}
+
+.character-card__body--edit .character-card__field {
+  margin-top: 5px;
 }
 
 .character-card__field-label {
@@ -66,7 +71,7 @@
   font-size: 14px;
   font-weight: 400;
   line-height: 21px;
-  color: rgba(0, 0, 0, 0.6);
+  color: rgb(0 0 0 / 60%);
 }
 
 .character-card__field-value--status {
@@ -79,7 +84,6 @@
   position: absolute;
   top: 8px;
   right: 8px;
-  display: inline-flex;
   align-items: center;
   justify-content: center;
   width: 17px;
@@ -90,4 +94,74 @@
   color: #000;
   cursor: pointer;
   display: none;
+}
+
+.character-card__name-input {
+  width: 100%;
+  min-height: 30px;
+
+  &.input--underlined {
+    min-height: 30px;
+  }
+
+  .input__field {
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 30px;
+    color: #000;
+  }
+}
+
+.character-card__field-input {
+  width: 100%;
+  min-height: 21px;
+
+  &.input--underlined {
+    min-height: 21px;
+  }
+
+  .input__field {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 21px;
+    color: rgb(0 0 0 / 60%);
+  }
+}
+
+.character-card__field-select {
+  .status-option {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    width: auto;
+  }
+
+  .status-option__label {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 21px;
+    color: rgb(0 0 0 / 60%);
+  }
+}
+
+.character-card__actions {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.character-card__action {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 17px;
+  height: 17px;
+  padding: 0;
+  border: none;
+  background: transparent;
+  color: #000;
+  cursor: pointer;
 }
