@@ -2,40 +2,35 @@ import './CharacterCard.scss';
 
 import { Check, Cross, Edit } from '@/assets';
 import { CharacterCard as CharacterCardComponent } from '@/components';
-import type { CharacterCardProps as CharacterCardComponentProps } from '@/components/characterCard/types';
+import type { Character } from '@/shared/types';
 
-export type CharacterCardWidgetProps = CharacterCardComponentProps & {
-  avatar: string;
+export type CharacterCardWidgetProps = {
+  character: Character;
+  isEditMode: boolean;
   onEdit: () => void;
   onCloseEdit: () => void;
+  onSave: () => void;
 };
 
 export function CharacterCard({
-  name,
-  gender,
-  species,
-  location,
-  status,
-  avatar,
+  character,
   isEditMode,
   onEdit,
   onCloseEdit,
   onSave
 }: CharacterCardWidgetProps) {
+  const { name, image } = character;
+
   return (
     <article className='character-card'>
       <img
-        src={avatar}
+        src={image}
         alt={name}
         className='character-card__avatar'
       />
 
       <CharacterCardComponent
-        name={name}
-        gender={gender}
-        species={species}
-        location={location}
-        status={status}
+        character={character}
         isEditMode={isEditMode}
         onSave={onSave}
       />

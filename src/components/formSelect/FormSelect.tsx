@@ -8,7 +8,7 @@ import {
 import {
   type DefaultOptionComponentProps,
   Select
-} from '../select/Select';
+} from '@/components/select/Select';
 
 type FormSelectProps<TFieldValues extends FieldValues, TOption> = {
   name: FieldPath<TFieldValues>;

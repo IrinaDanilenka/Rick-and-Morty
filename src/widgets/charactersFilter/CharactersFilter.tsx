@@ -4,17 +4,17 @@ import { useState } from 'react';
 
 import { Search } from '@/assets';
 import {
-  type CharacterStatus,
   type DefaultOptionComponentProps,
   Input,
   Select,
   Status as StatusBadge
 } from '@/components';
 import { optionsGender, optionsSpecies, optionsStatus } from '@/mockData/mock';
+import { type Status } from '@/shared/enums';
 
 const StatusOptionComponent = ({
   option
-}: DefaultOptionComponentProps<CharacterStatus>) => {
+}: DefaultOptionComponentProps<Status>) => {
   return (
     <div className='status-option'>
       <span className='status-option__label'>{option.label}</span>
@@ -26,7 +26,7 @@ const StatusOptionComponent = ({
 export function CharactersFilter() {
   const [gender, setGender] = useState<string | ''>('');
   const [species, setSpecies] = useState<string | ''>('');
-  const [status, setStatus] = useState<CharacterStatus | ''>('');
+  const [status, setStatus] = useState<Status | ''>('');
   const [characterName, setCharacterName] = useState<string | ''>('');
 
   const onChangeCharacterGender = (value: string) => {
@@ -37,7 +37,7 @@ export function CharactersFilter() {
     setSpecies(value);
   };
 
-  const onChangeCharacterStatus = (value: CharacterStatus) => {
+  const onChangeCharacterStatus = (value: Status) => {
     setStatus(value);
   };
 

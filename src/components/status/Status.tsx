@@ -1,6 +1,6 @@
 import './Status.scss';
 
-export type CharacterStatus = 'alive' | 'dead' | 'unknown';
+import type { Status as CharacterStatus } from '@/shared/enums';
 
 type StatusProps = {
   status: CharacterStatus;

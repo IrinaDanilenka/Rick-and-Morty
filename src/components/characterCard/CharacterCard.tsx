@@ -3,30 +3,16 @@ import { CharacterCardView } from './CharacterCardView';
 import type { CharacterCardProps } from './types';
 
 export function CharacterCard({
-  name,
-  gender,
-  species,
-  location,
-  status,
+  character,
   isEditMode,
   onSave
 }: CharacterCardProps) {
   return isEditMode ? (
     <CharacterCardEdit
-      name={name}
-      gender={gender}
-      species={species}
-      location={location}
-      status={status}
+      character={character}
       onSave={onSave}
     />
   ) : (
-    <CharacterCardView
-      name={name}
-      gender={gender}
-      species={species}
-      location={location}
-      status={status}
-    />
+    <CharacterCardView character={character} />
   );
 }

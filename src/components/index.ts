@@ -2,7 +2,6 @@ export { CharacterCard } from './characterCard/CharacterCard';
 export { CharacterCardEdit } from './characterCard/CharacterCardEdit';
 export { CharacterCardView } from './characterCard/CharacterCardView';
 export {
-  type CharacterCardData,
   type CharacterCardEditProps,
   type CharacterCardFormValues,
   type CharacterCardProps,
@@ -15,4 +14,4 @@ export {
   type DefaultOptionComponentProps,
   Select
 } from './select/Select';
-export { type CharacterStatus, Status } from './status/Status';
+export { Status } from './status/Status';
