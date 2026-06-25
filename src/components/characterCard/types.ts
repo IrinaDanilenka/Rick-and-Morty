@@ -1,6 +1,7 @@
-import { Gender, Species, Status } from '@/shared/enums';
+import type { Gender, Species, Status } from '@/shared/enums';
+import type { Character } from '@/shared/types';
 
-export type CharacterCardData = {
+export type CharacterCardFormValues = {
   name: string;
   gender: Gender;
   species: Species;
@@ -8,15 +9,17 @@ export type CharacterCardData = {
   status: Status;
 };
 
-export type CharacterCardFormValues = CharacterCardData;
-
-export type CharacterCardProps = CharacterCardData & {
+export type CharacterCardProps = {
+  character: Character;
   isEditMode: boolean;
   onSave: () => void;
 };
 
-export type CharacterCardViewProps = CharacterCardData;
+export type CharacterCardViewProps = {
+  character: Character;
+};
 
-export type CharacterCardEditProps = CharacterCardData & {
+export type CharacterCardEditProps = {
+  character: Character;
   onSave: () => void;
 };

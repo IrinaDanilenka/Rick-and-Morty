@@ -1,12 +1,14 @@
 import { useForm } from 'react-hook-form';
 
+import {
+  type DefaultOptionComponentProps,
+  FormInput,
+  FormSelect,
+  Status as StatusIndicator
+} from '@/components';
 import { optionsGender, optionsSpecies, optionsStatus } from '@/mockData/mock';
-import { Gender, Species, type Status } from '@/shared/enums';
+import { type Status } from '@/shared/enums';
 
-import { FormInput } from '../formInput/FormInput';
-import { FormSelect } from '../formSelect/FormSelect';
-import { type DefaultOptionComponentProps } from '../select/Select';
-import { Status as StatusIndicator } from '../status/Status';
 import type { CharacterCardEditProps, CharacterCardFormValues } from './types';
 
 const StatusOptionComponent = ({
@@ -21,15 +23,17 @@ const StatusOptionComponent = ({
 };
 
 export function CharacterCardEdit({
-  name,
-  gender,
-  species,
-  location,
-  status,
+  character: { name, gender, species, status, location },
   onSave
 }: CharacterCardEditProps) {
   const { control, handleSubmit } = useForm<CharacterCardFormValues>({
-    defaultValues: { name, gender, species, location, status }
+    defaultValues: {
+      name,
+      gender,
+      species,
+      location: location.name,
+      status
+    }
   });
 
   return (
@@ -46,7 +50,7 @@ export function CharacterCardEdit({
       />
 
       <div className='character-card__field'>
-        <FormSelect<CharacterCardFormValues, Gender>
+        <FormSelect
           name='gender'
           control={control}
           options={optionsGender}
@@ -58,7 +62,7 @@ export function CharacterCardEdit({
       </div>
 
       <div className='character-card__field'>
-        <FormSelect<CharacterCardFormValues, Species>
+        <FormSelect
           name='species'
           control={control}
           options={optionsSpecies}
@@ -81,7 +85,7 @@ export function CharacterCardEdit({
       </div>
 
       <div className='character-card__field'>
-        <FormSelect<CharacterCardFormValues, Status>
+        <FormSelect
           name='status'
           control={control}
           options={optionsStatus}

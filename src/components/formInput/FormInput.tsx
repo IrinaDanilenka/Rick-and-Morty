@@ -5,7 +5,7 @@ import {
   type FieldValues
 } from 'react-hook-form';
 
-import { Input } from '../input/Input';
+import { Input } from '@/components';
 
 type FormInputProps<T extends FieldValues> = {
   name: FieldPath<T>;

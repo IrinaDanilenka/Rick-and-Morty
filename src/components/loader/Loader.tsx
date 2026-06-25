@@ -1,6 +1,6 @@
 import './Loader.scss';
 
-import loaderImage from '../../assets/loader.png';
+import loaderImage from '@/assets/loader.png';
 
 type LoaderProps = {
   text: string;
