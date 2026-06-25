@@ -2,11 +2,10 @@ import './CharactersListPage.scss';
 
 import { useState } from 'react';
 
-import logoMainPage from '@/assets/logo_main_page.png';
-import { Loader } from '@/components/loader/Loader';
-import { useLoadCharacters } from '@/hooks/useLoadCharacters';
-import { CharacterCard } from '@/widgets';
-import { CharactersFilter } from '@/widgets/charactersFilter/CharactersFilter';
+import { logoMainPage } from '@/assets';
+import { Loader } from '@/components';
+import { useLoadCharacters } from '@/hooks';
+import { CharacterCard, CharactersFilter } from '@/widgets';
 
 export function CharactersListPage() {
   const { characterList, isLoading } = useLoadCharacters();
@@ -39,21 +38,21 @@ export function CharactersListPage() {
           text='Loading characters...'
           size={475}
         />
+      ) : characterList.length > 0 ? (
+        <div className='characters-list__cards'>
+          {characterList.map((character) => (
+            <CharacterCard
+              key={character.id}
+              character={character}
+              isEditMode={isEditMode}
+              onEdit={onEditCharacter}
+              onCloseEdit={onCloseEditCharacter}
+              onSave={onSaveCharacter}
+            />
+          ))}
+        </div>
       ) : (
-        characterList.length > 0 && (
-          <div className='characters-list__cards'>
-            {characterList.map((character) => (
-              <CharacterCard
-                key={character.id}
-                character={character}
-                isEditMode={isEditMode}
-                onEdit={onEditCharacter}
-                onCloseEdit={onCloseEditCharacter}
-                onSave={onSaveCharacter}
-              />
-            ))}
-          </div>
-        )
+        <p className='characters-list__empty'>Characters list is empty...</p>
       )}
     </div>
   );

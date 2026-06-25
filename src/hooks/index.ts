@@ -1,0 +1,1 @@
+export { useLoadCharacters } from './useLoadCharacters';

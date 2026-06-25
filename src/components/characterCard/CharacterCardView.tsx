@@ -1,4 +1,4 @@
-import { Status as StatusIndicator } from '@/components/status/Status';
+import { Status as StatusIndicator } from '@/components';
 import { STATUS_LABELS } from '@/shared/enums';
 
 import type { CharacterCardViewProps } from './types';

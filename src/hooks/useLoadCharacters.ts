@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
-import { getCharacterList } from "@/api/characterApi";
-import { showErrorToast } from "@/components/toast";
+import { getCharacterList } from '@/api';
+import { showErrorToast } from '@/components';
 import type { Character } from "@/shared/types";
 
 export function useLoadCharacters() {
@@ -20,8 +20,7 @@ export function useLoadCharacters() {
                     'Ошибка',
                     'Не удалось загрузить список персонажей'
                 );
-            }
-            finally {
+            } finally {
                 setIsLoading(false);
             }
         };

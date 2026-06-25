@@ -1,9 +1,11 @@
 import { useForm } from 'react-hook-form';
 
-import { FormInput } from '@/components/formInput/FormInput';
-import { FormSelect } from '@/components/formSelect/FormSelect';
-import { type DefaultOptionComponentProps } from '@/components/select/Select';
-import { Status as StatusIndicator } from '@/components/status/Status';
+import {
+  type DefaultOptionComponentProps,
+  FormInput,
+  FormSelect,
+  Status as StatusIndicator
+} from '@/components';
 import { optionsGender, optionsSpecies, optionsStatus } from '@/mockData/mock';
 import { type Status } from '@/shared/enums';
 
@@ -21,11 +23,9 @@ const StatusOptionComponent = ({
 };
 
 export function CharacterCardEdit({
-  character,
+  character: { name, gender, species, status, location },
   onSave
 }: CharacterCardEditProps) {
-  const { name, gender, species, status, location } = character;
-
   const { control, handleSubmit } = useForm<CharacterCardFormValues>({
     defaultValues: {
       name,

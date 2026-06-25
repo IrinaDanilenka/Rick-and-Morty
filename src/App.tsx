@@ -3,10 +3,8 @@ import './App.scss';
 import { Toaster } from 'react-hot-toast';
 import { Outlet, Route, Routes } from 'react-router';
 
-import { Footer } from '@/components/footer/Footer';
-import { Header } from '@/components/header/Header';
-import { CharacterInfoPage } from '@/pages/character-info/CharacterInfoPage';
-import { CharactersListPage } from '@/pages/characters-list/CharactersListPage';
+import { Footer, Header } from '@/components';
+import { CharacterInfoPage, CharactersListPage } from '@/pages';
 
 function MainLayout() {
   return (

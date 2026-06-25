@@ -7,11 +7,15 @@ export {
   type CharacterCardProps,
   type CharacterCardViewProps
 } from './characterCard/types';
+export { Footer } from './footer/Footer';
 export { FormInput } from './formInput/FormInput';
 export { FormSelect } from './formSelect/FormSelect';
+export { Header } from './header/Header';
 export { Input } from './input/Input';
+export { Loader } from './loader/Loader';
 export {
   type DefaultOptionComponentProps,
   Select
 } from './select/Select';
 export { Status } from './status/Status';
+export { ErrorToast, showErrorToast } from './toast';
