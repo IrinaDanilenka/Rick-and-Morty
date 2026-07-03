@@ -1,4 +1,4 @@
-import ArrowBack from '@/assets/arrow_back.svg?react';
+import ArrowBack from '@/assets/arrow-back.svg?react';
 import ArrowDropDown from '@/assets/arrow-drop-down.svg?react';
 import Check from '@/assets/check.svg?react';
 import Close from '@/assets/close.svg?react';

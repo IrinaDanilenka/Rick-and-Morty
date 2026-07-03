@@ -3,7 +3,7 @@ import './App.scss';
 import { Toaster } from 'react-hot-toast';
 import { Outlet, Route, Routes } from 'react-router';
 
-import { Footer, Header } from '@/components';
+import { ErrorBoundary, Footer, Header } from '@/components';
 import { CharacterInfoPage, CharactersListPage } from '@/pages';
 
 function MainLayout() {
@@ -33,18 +33,20 @@ function App() {
           }
         }}
       />
-      <Routes>
-        <Route element={<MainLayout />}>
-          <Route
-            path='/'
-            element={<CharactersListPage />}
-          />
-          <Route
-            path='/character'
-            element={<CharacterInfoPage />}
-          />
-        </Route>
-      </Routes>
+      <ErrorBoundary>
+        <Routes>
+          <Route element={<MainLayout />}>
+            <Route
+              path='/'
+              element={<CharactersListPage />}
+            />
+            <Route
+              path='/character'
+              element={<CharacterInfoPage />}
+            />
+          </Route>
+        </Routes>
+      </ErrorBoundary>
     </>
   );
 }

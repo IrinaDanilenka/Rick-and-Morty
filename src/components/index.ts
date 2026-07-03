@@ -7,6 +7,7 @@ export {
   type CharacterCardProps,
   type CharacterCardViewProps
 } from './characterCard/types';
+export { ErrorBoundary } from './errorBoundary/ErrorBoundary';
 export { Footer } from './footer/Footer';
 export { FormInput } from './formInput/FormInput';
 export { FormSelect } from './formSelect/FormSelect';
