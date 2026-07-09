@@ -32,7 +32,7 @@ export interface CharactersResponse {
 
 export type CharacterFilters = {
     name?: string;
-    species?: Species | '';
-    gender?: Gender | '';
-    status?: Status | '';
+    species?: Species;
+    gender?: Gender;
+    status?: Status;
 };
