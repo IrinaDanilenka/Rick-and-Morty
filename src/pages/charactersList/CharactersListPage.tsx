@@ -5,10 +5,19 @@ import { useState } from 'react';
 import { logoMainPage } from '@/assets';
 import { Loader } from '@/components';
 import { useLoadCharacters } from '@/hooks';
+import type { CharacterFilters } from '@/shared/types';
 import { CharacterCard, CharactersFilter } from '@/widgets';
 
+const initialFilters: CharacterFilters = {
+  name: '',
+  species: '',
+  gender: '',
+  status: ''
+};
+
 export function CharactersListPage() {
-  const { characterList, isLoading } = useLoadCharacters();
+  const [filters, setFilters] = useState<CharacterFilters>(initialFilters);
+  const { characterList, isLoading } = useLoadCharacters(filters);
   const [isEditMode, setIsEditMode] = useState(false);
 
   const onEditCharacter = () => {
@@ -31,7 +40,10 @@ export function CharactersListPage() {
         className='characters-list__logo'
       />
 
-      <CharactersFilter />
+      <CharactersFilter
+        filters={filters}
+        onFilterChange={setFilters}
+      />
 
       {isLoading ? (
         <Loader

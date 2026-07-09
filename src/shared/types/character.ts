@@ -29,3 +29,10 @@ export interface CharactersResponse {
     };
     results: Character[];
 }
+
+export type CharacterFilters = {
+    name?: string;
+    species?: Species;
+    gender?: Gender;
+    status?: Status;
+};

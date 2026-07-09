@@ -1,32 +1,51 @@
-import { useEffect, useState } from "react";
+import { isAxiosError } from 'axios';
+import { useEffect, useState } from 'react';
 
 import { getCharacterList } from '@/api';
 import { showErrorToast } from '@/components';
-import type { Character } from "@/shared/types";
+import type { Character, CharacterFilters } from '@/shared/types';
 
-export function useLoadCharacters() {
-    const [isLoading, setIsLoading] = useState(true);
-    const [characterList, setCharacterList] = useState<Character[]>([]);
+export function useLoadCharacters(filters: CharacterFilters = {}) {
+  const { name, species, gender, status } = filters;
+  const [isLoading, setIsLoading] = useState(true);
+  const [characterList, setCharacterList] = useState<Character[]>([]);
 
-    useEffect(() => {
-        const loadCharacterList = async () => {
-            setIsLoading(true);
-            try {
-                const data = await getCharacterList();
-                setCharacterList(data.results);
-            } catch {
-                setCharacterList([]);
-                showErrorToast(
-                    'Ошибка',
-                    'Не удалось загрузить список персонажей'
-                );
-            } finally {
-                setIsLoading(false);
-            }
-        };
+  useEffect(() => {
+    const controller = new AbortController();
 
-        loadCharacterList();
-    }, []);
+    const loadCharacterList = async () => {
+      setIsLoading(true);
 
-    return { characterList, isLoading };
+      try {
+        const data = await getCharacterList({
+          signal: controller.signal,
+          name,
+          species,
+          gender,
+          status
+        });
+        setCharacterList(data.results);
+      } catch (error) {
+        if (isAxiosError(error) && error.code === 'ERR_CANCELED') {
+          return;
+        }
+
+        setCharacterList([]);
+        showErrorToast(
+          'Ошибка',
+          'Не удалось загрузить список персонажей'
+        );
+      } finally {
+        if (!controller.signal.aborted) {
+          setIsLoading(false);
+        }
+      }
+    };
+
+    loadCharacterList();
+
+    return () => controller.abort();
+  }, [name, species, gender, status]);
+
+  return { characterList, isLoading };
 }

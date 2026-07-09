@@ -1,7 +1,5 @@
 import './CharactersFilter.scss';
 
-import { useState } from 'react';
-
 import { Search } from '@/assets';
 import {
   type DefaultOptionComponentProps,
@@ -11,6 +9,7 @@ import {
 } from '@/components';
 import { optionsGender, optionsSpecies, optionsStatus } from '@/mockData/mock';
 import { type Status } from '@/shared/enums';
+import type { CharacterFilters } from '@/shared/types';
 
 const StatusOptionComponent = ({
   option
@@ -23,60 +22,58 @@ const StatusOptionComponent = ({
   );
 };
 
-export function CharactersFilter() {
-  const [gender, setGender] = useState<string | ''>('');
-  const [species, setSpecies] = useState<string | ''>('');
-  const [status, setStatus] = useState<Status | ''>('');
-  const [characterName, setCharacterName] = useState<string | ''>('');
+type CharactersFilterProps = {
+  filters: CharacterFilters;
+  onFilterChange: (filters: CharacterFilters) => void;
+};
 
-  const onChangeCharacterGender = (value: string) => {
-    setGender(value);
-  };
-
-  const onChangeCharacterSpecies = (value: string) => {
-    setSpecies(value);
-  };
-
-  const onChangeCharacterStatus = (value: Status) => {
-    setStatus(value);
+export function CharactersFilter({
+  filters,
+  onFilterChange
+}: CharactersFilterProps) {
+  const updateFilter = <K extends keyof CharacterFilters>(
+    key: K,
+    value: CharacterFilters[K]
+  ) => {
+    onFilterChange({ ...filters, [key]: value });
   };
 
   return (
     <div className='characters-list__filters'>
       <Input
         placeholder='Filter by name...'
-        value={characterName}
+        value={filters.name ?? ''}
         variant='bordered'
-        onChange={setCharacterName}
+        onChange={(value) => updateFilter('name', value)}
         icon={<Search />}
       />
 
       <Select
         options={optionsSpecies}
-        value={species}
+        value={filters.species ?? ''}
         placeholder='Species'
         size='big'
         label=''
-        onChange={onChangeCharacterSpecies}
+        onChange={(value) => updateFilter('species', value)}
       />
 
       <Select
         options={optionsGender}
-        value={gender}
+        value={filters.gender ?? ''}
         placeholder='Gender'
         size='big'
         label=''
-        onChange={onChangeCharacterGender}
+        onChange={(value) => updateFilter('gender', value)}
       />
 
       <Select
         options={optionsStatus}
-        value={status}
+        value={filters.status ?? ''}
         placeholder='Status'
         size='big'
         label=''
         OptionComponent={StatusOptionComponent}
-        onChange={onChangeCharacterStatus}
+        onChange={(value) => updateFilter('status', value)}
       />
     </div>
   );
