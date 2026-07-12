@@ -3,21 +3,22 @@ import './CharactersListPage.scss';
 import { useState } from 'react';
 
 import { logoMainPage } from '@/assets';
-import { Loader } from '@/components';
+import { InfiniteScroll, Loader } from '@/components';
 import { useLoadCharacters } from '@/hooks';
 import type { CharacterFilters } from '@/shared/types';
 import { CharacterCard, CharactersFilter } from '@/widgets';
 
-const initialFilters: CharacterFilters = {
-  name: '',
-  species: '',
-  gender: '',
-  status: ''
-};
+const initialFilters: CharacterFilters = {};
 
 export function CharactersListPage() {
   const [filters, setFilters] = useState<CharacterFilters>(initialFilters);
-  const { characterList, isLoading } = useLoadCharacters(filters);
+  const {
+    characterList,
+    hasMore,
+    isInitialLoading,
+    isLoadingMore,
+    loadMore
+  } = useLoadCharacters(filters);
   const [isEditMode, setIsEditMode] = useState(false);
 
   const onEditCharacter = () => {
@@ -45,24 +46,30 @@ export function CharactersListPage() {
         onFilterChange={setFilters}
       />
 
-      {isLoading ? (
+      {isInitialLoading ? (
         <Loader
           text='Loading characters...'
           size={475}
         />
       ) : characterList.length > 0 ? (
-        <div className='characters-list__cards'>
-          {characterList.map((character) => (
-            <CharacterCard
-              key={character.id}
-              character={character}
-              isEditMode={isEditMode}
-              onEdit={onEditCharacter}
-              onCloseEdit={onCloseEditCharacter}
-              onSave={onSaveCharacter}
-            />
-          ))}
-        </div>
+        <InfiniteScroll
+          hasMore={hasMore}
+          isLoadingMore={isLoadingMore}
+          onLoadMore={loadMore}
+        >
+          <div className='characters-list__cards'>
+            {characterList.map((character) => (
+              <CharacterCard
+                key={character.id}
+                character={character}
+                isEditMode={isEditMode}
+                onEdit={onEditCharacter}
+                onCloseEdit={onCloseEditCharacter}
+                onSave={onSaveCharacter}
+              />
+            ))}
+          </div>
+        </InfiniteScroll>
       ) : (
         <p className='characters-list__empty'>Characters list is empty...</p>
       )}

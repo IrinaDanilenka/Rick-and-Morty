@@ -1,13 +1,23 @@
-import type { CharacterFilters, CharactersResponse } from '@/shared/types';
+import type { Gender, Species, Status } from '@/shared/enums';
+import type { Character, CharacterFilters, CharactersResponse } from '@/shared/types';
 
 import { apiClient } from './apiClient';
 
 type GetCharacterListProps = CharacterFilters & {
   signal?: AbortSignal;
+  page?: number;
 };
+
+const normalizeCharacter = (character: Character): Character => ({
+  ...character,
+  status: character.status.toLowerCase() as Status,
+  gender: character.gender.toLowerCase() as Gender,
+  species: character.species.toLowerCase() as Species
+});
 
 export const getCharacterList = async ({
   signal,
+  page = 1,
   name,
   species,
   gender,
@@ -16,6 +26,7 @@ export const getCharacterList = async ({
   const response = await apiClient().get<CharactersResponse>('/character', {
     signal,
     params: {
+      page,
       ...(name && { name }),
       ...(species && { species }),
       ...(gender && { gender }),
@@ -23,5 +34,8 @@ export const getCharacterList = async ({
     }
   });
 
-  return response.data;
+  return {
+    ...response.data,
+    results: response.data.results.map(normalizeCharacter)
+  };
 };
