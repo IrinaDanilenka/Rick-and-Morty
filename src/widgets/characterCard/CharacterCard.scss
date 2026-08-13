@@ -31,7 +31,7 @@
   flex-direction: column;
   justify-content: flex-start;
   min-width: 0;
-  padding-right: 44px;
+  padding-right: 20px;
 }
 
 .character-card__name {
@@ -39,7 +39,11 @@
   font-weight: 500;
   line-height: 30px;
   color: #000;
-  width: fit-content;
+  width: 100%;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 
   &:hover {
     text-decoration: underline;
@@ -52,7 +56,8 @@
   flex-direction: column;
   gap: 2px;
   min-width: 0;
-  max-width: 180px;
+  width: 100%;
+  max-width: 100%;
   margin-top: 7px;
 }
 
@@ -65,6 +70,9 @@
   font-weight: 500;
   line-height: 21px;
   color: #000;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .character-card__field-value {
@@ -72,12 +80,23 @@
   font-weight: 400;
   line-height: 21px;
   color: rgb(0 0 0 / 60%);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .character-card__field-value--status {
-  display: inline-flex;
+  display: flex;
   align-items: center;
   gap: 8px;
+  min-width: 0;
+
+  span {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    min-width: 0;
+  }
 }
 
 .character-card__edit {

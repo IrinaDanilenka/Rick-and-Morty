@@ -3,7 +3,7 @@ import './Loader.scss';
 import loaderImage from '@/assets/loader.png';
 
 type LoaderProps = {
-  text: string;
+  text?: string;
   size: number;
 };
 
@@ -13,7 +13,7 @@ export function Loader({ text, size }: LoaderProps) {
       className='loader'
       role='status'
       aria-live='polite'
-      aria-label={text}
+      aria-label={text ?? 'Loading'}
     >
       <div className='loader__portal'>
         <img
@@ -24,9 +24,11 @@ export function Loader({ text, size }: LoaderProps) {
           height={size}
         />
       </div>
-      <p className='loader__text'>
-        <span className='loader__text-label'>{text}</span>
-      </p>
+      {text && (
+        <p className='loader__text'>
+          <span className='loader__text-label'>{text}</span>
+        </p>
+      )}
     </div>
   );
 }

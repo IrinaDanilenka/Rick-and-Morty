@@ -12,6 +12,7 @@ export { Footer } from './footer/Footer';
 export { FormInput } from './formInput/FormInput';
 export { FormSelect } from './formSelect/FormSelect';
 export { Header } from './header/Header';
+export { InfiniteScroll } from './infiniteScroll/InfiniteScroll';
 export { Input } from './input/Input';
 export { Loader } from './loader/Loader';
 export {

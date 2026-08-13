@@ -11,29 +11,47 @@ export function CharacterCardView({ character }: CharacterCardViewProps) {
 
   return (
     <div className='character-card__body'>
-      <h6 className='character-card__name'>{name}</h6>
+      <h6
+        className='character-card__name'
+        title={name}
+      >
+        {name}
+      </h6>
 
       <div className='character-card__field'>
         <p className='character-card__field-label'>Gender</p>
-        <p className='character-card__field-value'>{formatEnumLabel(gender)}</p>
+        <p
+          className='character-card__field-value'
+          title={formatEnumLabel(gender)}
+        >
+          {formatEnumLabel(gender)}
+        </p>
       </div>
 
       <div className='character-card__field'>
         <p className='character-card__field-label'>Species</p>
-        <p className='character-card__field-value'>
+        <p
+          className='character-card__field-value'
+          title={formatEnumLabel(species)}
+        >
           {formatEnumLabel(species)}
         </p>
       </div>
 
       <div className='character-card__field'>
         <p className='character-card__field-label'>Location</p>
-        <p className='character-card__field-value'>{location.name}</p>
+        <p
+          className='character-card__field-value'
+          title={location.name}
+        >
+          {location.name}
+        </p>
       </div>
 
       <div className='character-card__field'>
         <p className='character-card__field-label'>Status</p>
         <p className='character-card__field-value character-card__field-value--status'>
-          <span>{STATUS_LABELS[status]}</span>
+          <span title={STATUS_LABELS[status]}>{STATUS_LABELS[status]}</span>
           <StatusIndicator status={status} />
         </p>
       </div>

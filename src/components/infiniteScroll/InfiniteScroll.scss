@@ -1,0 +1,18 @@
+.infinite-scroll {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.infinite-scroll__load-trigger {
+  width: 100%;
+  height: 1px;
+}
+
+.infinite-scroll__loader {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-top: 24px;
+}
