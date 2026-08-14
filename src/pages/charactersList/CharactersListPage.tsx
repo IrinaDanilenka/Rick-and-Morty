@@ -1,36 +1,55 @@
 import './CharactersListPage.scss';
 
 import { useState } from 'react';
+import { useNavigate } from 'react-router';
 
 import { logoMainPage } from '@/assets';
-import { InfiniteScroll, Loader } from '@/components';
+import {
+  type CharacterCardFormValues,
+  InfiniteScroll,
+  Loader
+} from '@/components';
 import { useLoadCharacters } from '@/hooks';
-import type { CharacterFilters } from '@/shared/types';
+import type { Character, CharacterFilters } from '@/shared/types';
 import { CharacterCard, CharactersFilter } from '@/widgets';
 
 const initialFilters: CharacterFilters = {};
 
 export function CharactersListPage() {
+  const navigate = useNavigate();
   const [filters, setFilters] = useState<CharacterFilters>(initialFilters);
   const {
     characterList,
     hasMore,
     isInitialLoading,
     isLoadingMore,
-    loadMore
+    loadMore,
+    updateCharacter
   } = useLoadCharacters(filters);
-  const [isEditMode, setIsEditMode] = useState(false);
+  const [editingCharacterId, setEditingCharacterId] = useState<number | null>(
+    null
+  );
 
-  const onEditCharacter = () => {
-    setIsEditMode(true);
+  const onEditCharacter = (id: number) => {
+    setEditingCharacterId(id);
   };
 
   const onCloseEditCharacter = () => {
-    setIsEditMode(false);
+    setEditingCharacterId(null);
   };
 
-  const onSaveCharacter = () => {
-    setIsEditMode(false);
+  const onSaveCharacter = (
+    character: Character,
+    values: CharacterCardFormValues
+  ) => {
+    updateCharacter(character.id, {
+      name: values.name,
+      gender: values.gender,
+      species: values.species,
+      status: values.status,
+      location: { ...character.location, name: values.location }
+    });
+    setEditingCharacterId(null);
   };
 
   return (
@@ -62,10 +81,11 @@ export function CharactersListPage() {
               <CharacterCard
                 key={character.id}
                 character={character}
-                isEditMode={isEditMode}
-                onEdit={onEditCharacter}
+                isEditMode={editingCharacterId === character.id}
+                onEdit={() => onEditCharacter(character.id)}
                 onCloseEdit={onCloseEditCharacter}
-                onSave={onSaveCharacter}
+                onSave={(values) => onSaveCharacter(character, values)}
+                onNameClick={() => navigate(`/character/${character.id}`)}
               />
             ))}
           </div>

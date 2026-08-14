@@ -15,6 +15,19 @@ const normalizeCharacter = (character: Character): Character => ({
   species: character.species.toLowerCase() as Species
 });
 
+type GetCharacterProps = {
+  id: number;
+  signal?: AbortSignal;
+};
+
+export const getCharacter = async ({ id, signal }: GetCharacterProps) => {
+  const response = await apiClient().get<Character>(`/character/${id}`, {
+    signal
+  });
+
+  return normalizeCharacter(response.data);
+};
+
 export const getCharacterList = async ({
   signal,
   page = 1,

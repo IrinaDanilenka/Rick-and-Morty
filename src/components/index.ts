@@ -1,6 +1,7 @@
 export { CharacterCard } from './characterCard/CharacterCard';
 export { CharacterCardEdit } from './characterCard/CharacterCardEdit';
 export { CharacterCardView } from './characterCard/CharacterCardView';
+export { getCharacterFormId } from './characterCard/constants';
 export {
   type CharacterCardEditProps,
   type CharacterCardFormValues,

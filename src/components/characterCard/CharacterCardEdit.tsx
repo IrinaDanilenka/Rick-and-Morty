@@ -9,6 +9,7 @@ import {
 import { optionsGender, optionsSpecies, optionsStatus } from '@/mockData/mock';
 import { type Status } from '@/shared/enums';
 
+import { getCharacterFormId } from './constants';
 import type { CharacterCardEditProps, CharacterCardFormValues } from './types';
 
 const StatusOptionComponent = ({
@@ -23,7 +24,7 @@ const StatusOptionComponent = ({
 };
 
 export function CharacterCardEdit({
-  character: { name, gender, species, status, location },
+  character: { id, name, gender, species, status, location },
   onSave
 }: CharacterCardEditProps) {
   const { control, handleSubmit } = useForm<CharacterCardFormValues>({
@@ -38,8 +39,9 @@ export function CharacterCardEdit({
 
   return (
     <form
+      id={getCharacterFormId(id)}
       className='character-card__body character-card__body--edit'
-      onSubmit={handleSubmit(() => onSave())}
+      onSubmit={handleSubmit((values) => onSave(values))}
     >
       <FormInput
         name='name'

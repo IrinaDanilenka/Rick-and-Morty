@@ -1,7 +1,11 @@
 import './CharacterCard.scss';
 
 import { Check, Cross, Edit } from '@/assets';
-import { CharacterCard as CharacterCardComponent } from '@/components';
+import {
+  CharacterCard as CharacterCardComponent,
+  type CharacterCardFormValues,
+  getCharacterFormId
+} from '@/components';
 import type { Character } from '@/shared/types';
 
 export type CharacterCardWidgetProps = {
@@ -9,7 +13,8 @@ export type CharacterCardWidgetProps = {
   isEditMode: boolean;
   onEdit: () => void;
   onCloseEdit: () => void;
-  onSave: () => void;
+  onSave: (values: CharacterCardFormValues) => void;
+  onNameClick: () => void;
 };
 
 export function CharacterCard({
@@ -17,9 +22,10 @@ export function CharacterCard({
   isEditMode,
   onEdit,
   onCloseEdit,
-  onSave
+  onSave,
+  onNameClick
 }: CharacterCardWidgetProps) {
-  const { name, image } = character;
+  const { id, name, image } = character;
 
   return (
     <article className='character-card'>
@@ -33,6 +39,7 @@ export function CharacterCard({
         character={character}
         isEditMode={isEditMode}
         onSave={onSave}
+        onNameClick={onNameClick}
       />
 
       {!isEditMode ? (
@@ -55,10 +62,10 @@ export function CharacterCard({
             <Cross aria-hidden />
           </button>
           <button
-            type='button'
+            type='submit'
+            form={getCharacterFormId(id)}
             className='character-card__action character-card__action--save'
             aria-label={`Save ${name}`}
-            onClick={onSave}
           >
             <Check aria-hidden />
           </button>

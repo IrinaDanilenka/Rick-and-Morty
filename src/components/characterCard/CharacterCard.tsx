@@ -5,7 +5,8 @@ import type { CharacterCardProps } from './types';
 export function CharacterCard({
   character,
   isEditMode,
-  onSave
+  onSave,
+  onNameClick
 }: CharacterCardProps) {
   return isEditMode ? (
     <CharacterCardEdit
@@ -13,6 +14,9 @@ export function CharacterCard({
       onSave={onSave}
     />
   ) : (
-    <CharacterCardView character={character} />
+    <CharacterCardView
+      character={character}
+      onNameClick={onNameClick}
+    />
   );
 }

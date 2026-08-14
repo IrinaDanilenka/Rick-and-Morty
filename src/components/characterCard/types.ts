@@ -12,14 +12,16 @@ export type CharacterCardFormValues = {
 export type CharacterCardProps = {
   character: Character;
   isEditMode: boolean;
-  onSave: () => void;
+  onSave: (values: CharacterCardFormValues) => void;
+  onNameClick: () => void;
 };
 
 export type CharacterCardViewProps = {
   character: Character;
+  onNameClick: () => void;
 };
 
 export type CharacterCardEditProps = {
   character: Character;
-  onSave: () => void;
+  onSave: (values: CharacterCardFormValues) => void;
 };

@@ -1,12 +1,13 @@
 import { Status as StatusIndicator } from '@/components';
+import { formatEnumLabel } from '@/helpers';
 import { STATUS_LABELS } from '@/shared/enums';
 
 import type { CharacterCardViewProps } from './types';
 
-const formatEnumLabel = (value: string): string =>
-  value.charAt(0).toUpperCase() + value.slice(1);
-
-export function CharacterCardView({ character }: CharacterCardViewProps) {
+export function CharacterCardView({
+  character,
+  onNameClick
+}: CharacterCardViewProps) {
   const { name, gender, species, status, location } = character;
 
   return (
@@ -14,6 +15,7 @@ export function CharacterCardView({ character }: CharacterCardViewProps) {
       <h6
         className='character-card__name'
         title={name}
+        onClick={onNameClick}
       >
         {name}
       </h6>
