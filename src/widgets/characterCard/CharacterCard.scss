@@ -116,7 +116,7 @@
 }
 
 .character-card__name-input {
-  width: 100%;
+  width: calc(100% - 50px);
   min-height: 30px;
 
   &.input--underlined {

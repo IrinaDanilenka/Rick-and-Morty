@@ -156,11 +156,23 @@ export function useLoadCharacters(filters: CharacterFilters = {}) {
     }
   }, [filters, hasMore, isInitialLoading]);
 
+  const updateCharacter = useCallback(
+    (id: number, changes: Partial<Character>) => {
+      setCharacterList((prev) =>
+        prev.map((character) =>
+          character.id === id ? { ...character, ...changes } : character
+        )
+      );
+    },
+    []
+  );
+
   return {
     characterList,
     hasMore,
     isInitialLoading,
     isLoadingMore,
-    loadMore
+    loadMore,
+    updateCharacter
   };
 }
