@@ -1,6 +1,6 @@
 import './CharacterInfoPage.scss';
 
-import { useNavigate, useParams } from 'react-router';
+import { Navigate, useNavigate, useParams } from 'react-router';
 
 import { ArrowBack } from '@/assets';
 import { Loader } from '@/components';
@@ -25,9 +25,18 @@ export function CharacterInfoPage() {
   const { id } = useParams();
 
   const characterId = Number(id);
-  const { character, isLoading } = useLoadCharacter(
+  const { character, isLoading, isNotFound } = useLoadCharacter(
     Number.isInteger(characterId) && characterId > 0 ? characterId : null
   );
+
+  if (isNotFound) {
+    return (
+      <Navigate
+        to='/404'
+        replace
+      />
+    );
+  }
 
   return (
     <div className='character-info-page'>

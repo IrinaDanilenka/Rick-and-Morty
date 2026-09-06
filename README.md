@@ -1,73 +1,80 @@
-# React + TypeScript + Vite
+# Rick and Morty
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+SPA-приложение — каталог персонажей мультсериала «Рик и Морти», с использование публичного апи (https://rickandmortyapi.com/).
 
-Currently, two official plugins are available:
+Приложение показывает список персонажей с фильтрами и бесконечной подгрузкой, позволяет открыть карточку конкретного персонажа и отредактировать данные прямо в списке.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Стек
 
-## React Compiler
+- **React 19** + **TypeScript**
+- **Vite** — сборка и dev-сервер
+- **React Router** — маршрутизация
+- **React Hook Form** — формы редактирования карточки
+- **Axios** — запросы к API
+- **SCSS** — стили (БЭМ-нейминг классов)
+- **react-hot-toast** — уведомления об ошибках
+- **ESLint / Prettier / Stylelint** — линтеры и форматирование
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Реализованный функционал
 
-## Expanding the ESLint configuration
+- Список персонажей с фильтрацией и бесконечной подгрузкой
+- Страница персонажа (`/character/:id`)
+- Обработка ошибок
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## Где посмотреть
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+- **Демо (GitHub Pages): https://irinadanilenka.github.io/Rick-and-Morty/**
+- Репозиторий: https://github.com/IrinaDanilenka/Rick-and-Morty
+- Локально после `npm run dev`: http://localhost:5173
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+## Запуск
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+Нужен Node.js 20+ и npm.
+
+```bash
+# установить зависимости
+npm install
+
+# запустить дев-сервер с hot reload (http://localhost:5173)
+npm run dev
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### Сборка
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+```bash
+# проверка типов (tsc -b) + продакшен-сборка в папку dist/
+npm run build
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+# локальный просмотр собранной версии
+npm run preview
 ```
+
+### Проверки кода
+
+```bash
+# eslint + stylelint
+npm run lint
+
+# только стили
+npm run lint:styles
+npm run lint:styles:fix
+
+# форматирование исходников через prettier
+npm run pretty
+```
+
+## Структура проекта
+
+```
+src/
+├── api/         — клиент axios и запросы к Rick and Morty API
+├── assets/      — изображения и svg-иконки
+├── components/  — переиспользуемые UI-компоненты (Input, Select, Loader, тосты и др.)
+├── helpers/     — вспомогательные функции
+├── hooks/       — загрузка персонажа и списка персонажей
+├── pages/       — страницы: список, карточка персонажа, 404
+├── shared/      — общие типы и enum'ы
+└── widgets/     — составные блоки страниц (карточка персонажа, фильтры)
+```
+
+Описание используемого API лежит в [docs/R_and_M_API.md](docs/R_and_M_API.md) и [docs/swagger.yaml](docs/swagger.yaml).

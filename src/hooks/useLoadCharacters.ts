@@ -66,10 +66,7 @@ export function useLoadCharacters(filters: CharacterFilters = {}) {
 
         setCharacterList([]);
         setHasMore(false);
-        showErrorToast(
-          'Ошибка',
-          'Не удалось загрузить список персонажей'
-        );
+        showErrorToast('Error', 'Failed to load characters list');
       } finally {
         if (!controller.signal.aborted && requestFiltersKey === filtersKeyRef.current) {
           setIsInitialLoading(false);
@@ -144,10 +141,7 @@ export function useLoadCharacters(filters: CharacterFilters = {}) {
         loadMoreBlockedRef.current = false;
       }, 2000);
 
-      showErrorToast(
-        'Ошибка',
-        'Не удалось загрузить список персонажей'
-      );
+      showErrorToast('Error', 'Failed to load characters list');
     } finally {
       if (!controller.signal.aborted && requestFiltersKey === filtersKeyRef.current) {
         isLoadingMoreRef.current = false;
