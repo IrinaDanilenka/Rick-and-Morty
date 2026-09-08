@@ -3,47 +3,55 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-}
 
-.loader__portal {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  animation: loader-float 2.4s ease-in-out infinite;
-}
+  &__portal {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: loader-float 2.4s ease-in-out infinite;
 
-.loader__portal::before {
-  content: '';
-  position: absolute;
-  inset: 8%;
-  border-radius: 50%;
-  background: radial-gradient(
-    circle,
-    rgb(151 255 87 / 55%) 0%,
-    rgb(151 255 87 / 15%) 45%,
-    transparent 70%
-  );
-  animation: loader-glow 2.4s ease-in-out infinite;
-  pointer-events: none;
-}
+    &::before {
+      content: '';
+      position: absolute;
+      inset: 8%;
+      border-radius: 50%;
+      background: radial-gradient(
+        circle,
+        rgb(151 255 87 / 55%) 0%,
+        rgb(151 255 87 / 15%) 45%,
+        transparent 70%
+      );
+      animation: loader-glow 2.4s ease-in-out infinite;
+      pointer-events: none;
+    }
+  }
 
-.loader__image {
-  position: relative;
-  z-index: 1;
-  display: block;
-  animation: loader-pulse 2.4s ease-in-out infinite;
-  filter: drop-shadow(0 0 14px rgb(132 224 58 / 45%));
-}
+  &__image {
+    position: relative;
+    z-index: 1;
+    display: block;
+    animation: loader-pulse 2.4s ease-in-out infinite;
+    filter: drop-shadow(0 0 14px rgb(132 224 58 / 45%));
+  }
 
-.loader__text {
-  display: flex;
-  align-items: center;
-  margin: 20px 0 0;
-  font-size: 18px;
-  font-weight: 700;
-  line-height: 1;
-  color: #000;
+  &__text {
+    display: flex;
+    align-items: center;
+    margin: 20px 0 0;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 1;
+    color: #000;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    &__portal,
+    &__portal::before,
+    &__image {
+      animation: none;
+    }
+  }
 }
 
 @keyframes loader-float {
@@ -92,13 +100,5 @@
   40% {
     transform: translateY(-7px);
     opacity: 1;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .loader__portal,
-  .loader__portal::before,
-  .loader__image {
-    animation: none;
   }
 }

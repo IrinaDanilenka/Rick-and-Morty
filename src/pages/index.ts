@@ -1,3 +1,3 @@
-export { CharacterInfoPage } from './characterInfo/CharacterInfoPage';
-export { CharactersListPage } from './charactersList/CharactersListPage';
-export { NotFoundPage } from './notFound/NotFoundPage';
+export * from './characterInfo/CharacterInfoPage';
+export * from './charactersList/CharactersListPage';
+export * from './notFound/NotFoundPage';

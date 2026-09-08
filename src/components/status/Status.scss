@@ -4,16 +4,16 @@
   height: 8px;
   border-radius: 50%;
   flex-shrink: 0;
-}
 
-.status--alive {
-  background-color: #5c4;
-}
+  &--alive {
+    background-color: #5c4;
+  }
 
-.status--dead {
-  background-color: #e85d5d;
-}
+  &--dead {
+    background-color: #e85d5d;
+  }
 
-.status--unknown {
-  background-color: #f0a500;
+  &--unknown {
+    background-color: #f0a500;
+  }
 }

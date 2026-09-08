@@ -9,7 +9,7 @@ import {
   InfiniteScroll,
   Loader
 } from '@/components';
-import { useLoadCharacters } from '@/hooks';
+import { useDebouncedValue, useLoadCharacters } from '@/hooks';
 import type { Character, CharacterFilters } from '@/shared/types';
 import { CharacterCard, CharactersFilter } from '@/widgets';
 
@@ -18,6 +18,7 @@ const initialFilters: CharacterFilters = {};
 export function CharactersListPage() {
   const navigate = useNavigate();
   const [filters, setFilters] = useState<CharacterFilters>(initialFilters);
+  const debouncedFilters = useDebouncedValue(filters);
   const {
     characterList,
     hasMore,
@@ -25,7 +26,7 @@ export function CharactersListPage() {
     isLoadingMore,
     loadMore,
     updateCharacter
-  } = useLoadCharacters(filters);
+  } = useLoadCharacters(debouncedFilters);
   const [editingCharacterId, setEditingCharacterId] = useState<number | null>(
     null
   );
