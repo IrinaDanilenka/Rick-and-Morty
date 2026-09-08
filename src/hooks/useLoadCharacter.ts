@@ -9,6 +9,7 @@ export function useLoadCharacter(id: number | null) {
   const [character, setCharacter] = useState<Character | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [hasError, setHasError] = useState(false);
+  const [isNotFound, setIsNotFound] = useState(false);
 
   useEffect(() => {
     if (id === null) {
@@ -20,6 +21,7 @@ export function useLoadCharacter(id: number | null) {
     const loadCharacter = async () => {
       setIsLoading(true);
       setHasError(false);
+      setIsNotFound(false);
 
       try {
         const data = await getCharacter({ id, signal: controller.signal });
@@ -31,8 +33,15 @@ export function useLoadCharacter(id: number | null) {
         }
 
         setCharacter(null);
+
+        if (isAxiosError(error) && error.response?.status === 404) {
+          setIsNotFound(true);
+
+          return;
+        }
+
         setHasError(true);
-        showErrorToast('Ошибка', 'Не удалось загрузить данные персонажа');
+        showErrorToast('Error', 'Failed to load character data');
       } finally {
         if (!controller.signal.aborted) {
           setIsLoading(false);
@@ -48,8 +57,13 @@ export function useLoadCharacter(id: number | null) {
   }, [id]);
 
   if (id === null) {
-    return { character: null, isLoading: false, hasError: true };
+    return {
+      character: null,
+      isLoading: false,
+      hasError: false,
+      isNotFound: true
+    };
   }
 
-  return { character, isLoading, hasError };
+  return { character, isLoading, hasError, isNotFound };
 }

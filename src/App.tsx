@@ -4,7 +4,7 @@ import { Toaster } from 'react-hot-toast';
 import { Outlet, Route, Routes } from 'react-router';
 
 import { ErrorBoundary, Footer, Header } from '@/components';
-import { CharacterInfoPage, CharactersListPage } from '@/pages';
+import { CharacterInfoPage, CharactersListPage, NotFoundPage } from '@/pages';
 
 function MainLayout() {
   return (
@@ -43,6 +43,14 @@ function App() {
             <Route
               path='/character/:id'
               element={<CharacterInfoPage />}
+            />
+            <Route
+              path='/404'
+              element={<NotFoundPage />}
+            />
+            <Route
+              path='*'
+              element={<NotFoundPage />}
             />
           </Route>
         </Routes>
