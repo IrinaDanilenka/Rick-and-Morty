@@ -8,12 +8,12 @@
   height: 60px;
   background-color: #fff;
   box-shadow: -2px 0 8px 2px rgb(0 0 0 / 10%);
-}
 
-.header__logo {
-  display: block;
-  width: 48px;
-  height: auto;
-  margin-left: 210px;
-  color: #000;
+  &__logo {
+    display: block;
+    width: 48px;
+    height: auto;
+    margin-left: 210px;
+    color: #000;
+  }
 }
